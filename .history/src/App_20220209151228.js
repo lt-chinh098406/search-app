@@ -21,7 +21,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Monster Rolodex</h1>
       <SearchBox placeholder="search monsters" handlerChange={handleChange} />
       <CardList monsters={filteredMonsters}></CardList>
     </div>

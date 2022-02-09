@@ -4,7 +4,7 @@ import { CardList } from './components/card-list/card-list.component';
 import { SearchBox } from './components/search-box/search-box.component';
 
 function App() {
-  const [monsters, setMonsters] = useState([]);
+  const { monsters, setMonsters } = useState([]);
   const [searchField, setSearchField] = useState('');
 
   fetch('https://jsonplaceholder.typicode.com/users')
@@ -15,14 +15,12 @@ function App() {
     monster.name.toLowerCase().includes(searchField.toLowerCase())
   );
 
-  const handleChange = (e) => {
-    setSearchField(e.target.value);
-  };
-
   return (
     <div className="App">
-      <h1>Monster Rolodex</h1>
-      <SearchBox placeholder="search monsters" handlerChange={handleChange} />
+      <SearchBox
+        placeholder="search monsters"
+        handlerChange={(e) => setSearchField(e.target.value)}
+      />
       <CardList monsters={filteredMonsters}></CardList>
     </div>
   );
